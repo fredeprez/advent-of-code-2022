@@ -1,9 +1,12 @@
+use itertools::Itertools;
+
 use super::day::Day;
 
 pub struct Day1 {}
 
 impl Day for Day1 {
     fn run(&self) {
+        // Part 1
         let mut max: u32 = 0;
         let mut current_max: u32 = 0;
         std::fs::read_to_string("input/elves")
@@ -22,5 +25,20 @@ impl Day for Day1 {
             });
 
         println!("{}", max);
+
+        // Part 2
+        println!(
+            "{:?}",
+            include_str!("../../input/elves")
+                .split("\n\n")
+                .map(|x| x
+                    .lines()
+                    .map(|cal| cal.parse::<u32>().unwrap())
+                    .sum::<u32>())
+                .map(std::cmp::Reverse)
+                .k_smallest(3)
+                .map(|x| x.0)
+                .sum::<u32>()
+        )
     }
 }
