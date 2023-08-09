@@ -48,7 +48,7 @@ impl Day for Day3II {
             .map(|chunks| {
                 return chunks
                     // Need to use cloned(), otherwise .collect returns type HashSet<&Item>
-                    .reduce(|mut set_a, set_b| set_a.intersection(&set_b).cloned().collect())
+                    .reduce(|set_a, set_b| set_a.intersection(&set_b).cloned().collect())
                     .expect("We always have per 3 chunks")
                     .iter()
                     .next()
