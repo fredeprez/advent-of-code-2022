@@ -6,9 +6,6 @@ pub struct Day3I {}
 
 impl Day for Day3I {
     fn run(&self) {
-        let a: char = 'a';
-        let A: char = 'Z';
-        println!("a {} A {}", a as u32, A as u32);
         println!(
             "{:?}",
             std::fs::read_to_string("input/day3-rucksack")
