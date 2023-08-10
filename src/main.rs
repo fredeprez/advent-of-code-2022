@@ -1,9 +1,11 @@
 mod days;
 
-use std::str::FromStr;
-
 use anyhow::{anyhow, Error, Result};
-use days::{day::Day, day1::Day1, day2_i::Day2I, day2_ii::Day2II, day3_i::Day3I, day3_ii::Day3II};
+use days::{
+    day::Day, day1::Day1, day2_i::Day2I, day2_ii::Day2II, day3_i::Day3I, day3_ii::Day3II,
+    day4_i::Day4I,
+};
+use std::str::FromStr;
 
 enum Days {
     Day1(Day1),
@@ -11,6 +13,7 @@ enum Days {
     Day2II(Day2II),
     Day3I(Day3I),
     Day3II(Day3II),
+    Day4I(Day4I),
 }
 
 impl FromStr for Days {
@@ -23,6 +26,7 @@ impl FromStr for Days {
             "day2_ii" => return Ok(Days::Day2II(Day2II {})),
             "day3_i" => return Ok(Days::Day3I(Day3I {})),
             "day3_ii" => return Ok(Days::Day3II(Day3II {})),
+            "day4_i" => return Ok(Days::Day4I(Day4I {})),
             _ => return Err(anyhow!("Wrong day argument")),
         }
     }
@@ -36,6 +40,7 @@ impl Day for Days {
             Days::Day2II(day2_ii) => day2_ii.run(),
             Days::Day3I(day3_i) => day3_i.run(),
             Days::Day3II(day3_ii) => day3_ii.run(),
+            Days::Day4I(day4_i) => day4_i.run(),
         }
     }
 }
